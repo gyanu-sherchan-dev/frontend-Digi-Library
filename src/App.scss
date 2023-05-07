@@ -1,0 +1,56 @@
+.layout {
+  background-color: rgba(213, 223, 224, 0.553);
+}
+
+//navbar
+.nav {
+  color: aquamarine;
+
+  span {
+    font-size: medium;
+    color: rgb(7, 162, 164);
+    font-style: initial;
+    font-weight: bold;
+  }
+}
+
+//register
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+
+  .reg-content {
+    height: max-content;
+    width: 800px;
+    margin-top: 64px;
+    border-radius: 8px;
+    padding: 40px 40px 10px 40px;
+    box-shadow: 1px 1px 20px rgb(150, 150, 150) inset;
+
+    .reg-img {
+      width: 100%;
+      height: 412px;
+
+      img {
+        border-radius: 8px;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+//children
+.children {
+  min-height: 78vh;
+}
+
+.footer {
+  height: 120px;
+  text-align: center;
+  // background: rgba(230, 239, 240, 0.292);
+  color: black;
+  font-weight: bold;
+  padding-top: 50px;
+}

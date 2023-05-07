@@ -1,7 +1,13 @@
-import "./App.css";
+import React from "react";
+import "./App.scss";
+import Registration from "./pages/Registration";
 
-function App() {
-  return <div className="">Digi Library</div>;
-}
+const App = () => {
+  return (
+    <div>
+      <Registration />
+    </div>
+  );
+};
 
 export default App;
