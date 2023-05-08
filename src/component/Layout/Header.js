@@ -12,8 +12,8 @@ const Header = () => {
             <i class="zmdi zmdi-library"></i> Digi <span>Library</span>
           </Navbar.Brand>
           <Nav className="ms-auto fw-bolder">
-            <Nav.Link href="#home">Register</Nav.Link>
-            <Nav.Link href="#features">Login</Nav.Link>
+            <Nav.Link href="/register">Register</Nav.Link>
+            <Nav.Link href="/">Login</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
