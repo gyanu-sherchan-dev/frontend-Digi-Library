@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import CustomInput from "../component/CustomInput/CustomInput";
+import { Link } from "react-router-dom";
 import { postNewUser } from "../helpers/axiosHelpers";
 import { toast } from "react-toastify";
 
@@ -66,7 +67,7 @@ const Registration = () => {
   };
   return (
     <Layout>
-      <Container className="register">
+      <Container className="main">
         <div className="reg-content">
           <Row>
             <Col md={6} className="d-none d-md-block">
@@ -87,14 +88,29 @@ const Registration = () => {
                       />
                     );
                   })}
-                  <div className="d-grid">
+                  <Form.Group>
+                    <Form.Select name="role" onChange={handleOnChange} required>
+                      <option value="">Select an Option</option>
+                      <option value="student">Student</option>
+                      <option value="teacher">Teacher</option>
+                    </Form.Select>
+                  </Form.Group>
+
+                  <Form.Group className="mt-2">
+                    <Form.Check
+                      type="checkbox"
+                      label="I agree the T&Cs"
+                      required
+                    ></Form.Check>
+                  </Form.Group>
+                  <div className="d-grid mt-2">
                     <Button className="text-light" type="submit">
                       Register
                     </Button>
                   </div>
                 </Form>
                 <div className="text-end  mt-3">
-                  Already have an account ! <a href="/">Login Now</a>
+                  Already have an account ! <Link to="/">Login Now</Link>
                 </div>
               </div>
             </Col>
