@@ -20,6 +20,7 @@ export const postNewUser = async (userData) => {
 export const loginUser = async (userData) => {
   try {
     const { data } = await axios.post(userApiUrl + "/login", userData);
+    console.log(data);
     return data;
   } catch (error) {
     return {
