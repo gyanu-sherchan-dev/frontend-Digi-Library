@@ -21,7 +21,7 @@ const Header = ({ currentUser }) => {
           <Nav className="ms-auto fw-bolder">
             {currentUser?._id ? (
               <>
-                <div className="message d-flex align-items-center gap-2">
+                <div className="message d-flex align-items-center">
                   Welcome!{currentUser.fName}
                 </div>
 
