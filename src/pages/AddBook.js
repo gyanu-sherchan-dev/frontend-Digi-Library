@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import DashboardLayout from "../component/Layout/DashboardLayout";
 import Col from "react-bootstrap/Col";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, Spinner } from "react-bootstrap";
+import { addBook } from "../helpers/axiosHelpers";
+import { toast } from "react-toastify";
 
 const initialState = {
   title: "",
@@ -23,9 +25,16 @@ const AddBook = () => {
     });
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    setIsLoading(true);
+    const { status, message } = await addBook(formData);
+    console.log(status, message);
+    if (status) {
+      setIsLoading(false);
+      setFormData(initialState);
+      return toast[status](message);
+    }
   };
   return (
     <DashboardLayout>
@@ -53,6 +62,7 @@ const AddBook = () => {
                     type="text"
                     name="title"
                     onChange={handleChange}
+                    value={formData.title}
                   />
                 </Form.Group>
                 <Form.Group className="mb-2">
@@ -63,6 +73,7 @@ const AddBook = () => {
                     type="text"
                     name="author"
                     onChange={handleChange}
+                    value={formData.author}
                   />
                 </Form.Group>
                 <Form.Group className="mb-2">
@@ -73,6 +84,7 @@ const AddBook = () => {
                     type="text"
                     name="isbn"
                     onChange={handleChange}
+                    value={formData.isbn}
                   />
                 </Form.Group>
                 <Form.Group className="mb-2">
@@ -83,6 +95,7 @@ const AddBook = () => {
                     type="number"
                     name="year"
                     onChange={handleChange}
+                    value={formData.year}
                   />
                 </Form.Group>
                 <Form.Group className="mb-2">
@@ -93,10 +106,20 @@ const AddBook = () => {
                     type="text"
                     name="thumbnail"
                     onChange={handleChange}
+                    value={formData.thumbnail}
                   />
                 </Form.Group>
-                <Button variant="info" type="submit">
-                  Add Book
+                <Button
+                  variant="info"
+                  type="submit"
+                  className="mt-4 d-flex align-items-center gap-3"
+                >
+                  Add Book{" "}
+                  <span>
+                    {isloading && (
+                      <Spinner animation="border" variant="light" />
+                    )}
+                  </span>
                 </Button>
               </Form>
             </Col>

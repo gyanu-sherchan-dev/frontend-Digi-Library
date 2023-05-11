@@ -1,7 +1,11 @@
 import axios from "axios";
 
-const baseApiUrl = "http://localhost:8000/api/v1";
+const baseApiUrl =
+  process.env === "production" ? "/api/v1" : process.env.REACT_APP_ROOT_URL;
 const userApiUrl = baseApiUrl + "/user";
+
+//bookEP
+const bookEp = baseApiUrl + "/book";
 
 //create user
 export const postNewUser = async (userData) => {
@@ -22,6 +26,45 @@ export const loginUser = async (userData) => {
     const { data } = await axios.post(userApiUrl + "/login", userData);
     console.log(data);
     return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
+
+//book section
+
+// getting user id from sessionStorage
+const getUserId = () => {
+  const user = JSON.parse(sessionStorage.getItem("user"));
+  if (user) {
+    return user?._id;
+  }
+  return;
+};
+export const addBook = async (userData) => {
+  try {
+    const userId = getUserId();
+    if (!userId) {
+      return {
+        status: "error",
+        message: "Login first",
+      };
+    }
+
+    const { data } = await axios.post(bookEp, userData, {
+      headers: { Authorization: userId },
+    });
+
+    console.log(data);
+    if (data) {
+      return {
+        status: "success",
+        message: "Book added Successfully",
+      };
+    }
   } catch (error) {
     return {
       status: "error",

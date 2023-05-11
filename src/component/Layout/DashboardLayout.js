@@ -12,7 +12,7 @@ const DashboardLayout = ({ children }) => {
       setUser(u);
     }
   }, []);
-  console.log(user);
+
   return (
     <div className="dashboard-layout">
       {/* side-bar */}
