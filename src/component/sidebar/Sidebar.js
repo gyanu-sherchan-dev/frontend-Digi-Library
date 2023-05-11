@@ -29,7 +29,7 @@ const Sidebar = ({ currentUser }) => {
           {currentUser?.role === "teacher" && (
             <>
               <li>
-                <Link to="/" className="link">
+                <Link to="/books/add" className="link">
                   <i className="fa-solid fa-book-medical"></i>
                   <span>Add Book</span>
                 </Link>
