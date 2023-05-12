@@ -44,6 +44,8 @@ const getUserId = () => {
   }
   return;
 };
+
+//add books
 export const addBook = async (userData) => {
   try {
     const userId = getUserId();
@@ -65,6 +67,88 @@ export const addBook = async (userData) => {
         message: "Book added Successfully",
       };
     }
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
+
+//get books
+export const getBooks = async () => {
+  try {
+    const userId = getUserId();
+    if (!userId) {
+      return {
+        status: "error",
+        message: "Unauthorized",
+      };
+    }
+    const { data } = await axios.get(bookEp, {
+      headers: {
+        Authorization: userId,
+      },
+    });
+    return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
+
+//borrow books
+export const borrowBooks = async (bookId) => {
+  try {
+    const userId = getUserId();
+    if (!userId) {
+      return {
+        status: "error",
+        message: "Unauthorized",
+      };
+    }
+    const { data } = await axios.post(
+      bookEp + "/borrow",
+      { bookId },
+      {
+        headers: {
+          Authorization: userId,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
+
+//delete book
+export const deleteBooks = async (bookId) => {
+  try {
+    const userId = getUserId();
+    if (!userId) {
+      return {
+        status: "error",
+        message: "Unauthorized",
+      };
+    }
+    const { data } = await axios.delete(
+      bookEp,
+
+      {
+        data: { bookId },
+        headers: {
+          Authorization: userId,
+        },
+      }
+    );
+    console.log(data);
+    return data;
   } catch (error) {
     return {
       status: "error",
