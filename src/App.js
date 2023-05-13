@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Books from "./pages/Books";
 import AddBook from "./pages/AddBook";
+import MyBooks from "./pages/MyBooks";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/" element={<Login />} />
           <Route path="/books" element={<Books />} />
           <Route path="/books/add" element={<AddBook />} />
+          <Route path="/books/mybooks" element={<MyBooks />} />
         </Routes>
         <ToastContainer />
       </BrowserRouter>

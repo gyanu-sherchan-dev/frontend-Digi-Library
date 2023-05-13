@@ -24,7 +24,6 @@ export const postNewUser = async (userData) => {
 export const loginUser = async (userData) => {
   try {
     const { data } = await axios.post(userApiUrl + "/login", userData);
-    console.log(data);
     return data;
   } catch (error) {
     return {
@@ -142,6 +141,63 @@ export const deleteBooks = async (bookId) => {
 
       {
         data: { bookId },
+        headers: {
+          Authorization: userId,
+        },
+      }
+    );
+    console.log(data);
+    return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
+
+//mybook user specific borrowed books
+export const getBorrowedBooks = async () => {
+  try {
+    const userId = getUserId();
+    if (!userId) {
+      return {
+        status: "error",
+        message: "Unauthorized",
+      };
+    }
+    const { data } = await axios.get(bookEp + "/borrowedBooks", {
+      headers: {
+        Authorization: userId,
+      },
+    });
+    return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
+
+//Return borrowed books
+export const returnBook = async (bookId) => {
+  console.log(bookId);
+  try {
+    const userId = getUserId();
+    if (!userId) {
+      return {
+        status: "error",
+        message: "Please login first!",
+      };
+    }
+
+    const { data } = await axios.patch(
+      bookEp + "/return",
+      {
+        _id: bookId,
+      },
+      {
         headers: {
           Authorization: userId,
         },

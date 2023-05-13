@@ -20,7 +20,7 @@ const Sidebar = ({ currentUser }) => {
             </Link>
           </li>
           <li>
-            <Link to="/" className="link">
+            <Link to="/books/mybooks" className="link">
               <i className="fa-solid fa-book-open"></i>
               <span>My Books</span>
             </Link>

@@ -16,8 +16,6 @@ const Books = () => {
     fetchAllBooks();
   }, []);
 
-  console.log(books);
-
   return (
     <DashboardLayout>
       <Container>
