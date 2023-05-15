@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Books from "./pages/Books";
 import AddBook from "./pages/AddBook";
 import MyBooks from "./pages/MyBooks";
+import Transactions from "./pages/Transactions";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/books" element={<Books />} />
           <Route path="/books/add" element={<AddBook />} />
           <Route path="/books/mybooks" element={<MyBooks />} />
+          <Route path="/books/transactions" element={<Transactions />} />
         </Routes>
         <ToastContainer />
       </BrowserRouter>

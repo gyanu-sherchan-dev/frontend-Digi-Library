@@ -7,6 +7,9 @@ const userApiUrl = baseApiUrl + "/user";
 //bookEP
 const bookEp = baseApiUrl + "/book";
 
+//transaction EP
+const transactionEp = baseApiUrl + "/transaction";
+
 //create user
 export const postNewUser = async (userData) => {
   try {
@@ -205,6 +208,30 @@ export const returnBook = async (bookId) => {
     );
     console.log(data);
     return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
+
+//transaction
+
+export const getAllTransactions = async () => {
+  try {
+    const userId = getUserId();
+    if (!userId) {
+      return {
+        status: "error",
+        message: "Please login first!",
+      };
+    }
+    const { data } = await axios.get(transactionEp, {
+      headers: {
+        Authorization: userId,
+      },
+    });
   } catch (error) {
     return {
       status: "error",
