@@ -232,6 +232,8 @@ export const getAllTransactions = async () => {
         Authorization: userId,
       },
     });
+
+    return data;
   } catch (error) {
     return {
       status: "error",

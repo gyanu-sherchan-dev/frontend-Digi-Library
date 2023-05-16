@@ -35,7 +35,7 @@ const Sidebar = ({ currentUser }) => {
                 </Link>
               </li>
               <li>
-                <Link to="/transactions" className="link">
+                <Link to="/books/transactions" className="link">
                   <i className="fa-solid fa-left-right"></i>{" "}
                   <span>Transactions</span>
                 </Link>
