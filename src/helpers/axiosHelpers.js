@@ -36,6 +36,36 @@ export const loginUser = async (userData) => {
   }
 };
 
+//update user Password in profile page:
+
+export const updatePassword = async (passInfo) => {
+  try {
+    const userId = getUserId();
+    if (!userId) {
+      return {
+        status: "error",
+        message: "Unauthorized",
+      };
+    }
+
+    const { data } = await axios.patch(
+      userApiUrl + "/passwordUpdate",
+      passInfo,
+      {
+        headers: {
+          Authorization: userId,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
+
 //book section
 
 // getting user id from sessionStorage
