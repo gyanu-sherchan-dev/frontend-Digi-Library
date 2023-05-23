@@ -39,6 +39,7 @@ export const loginUser = async (userData) => {
 //update user Password in profile page:
 
 export const updatePassword = async (passInfo) => {
+  console.log(passInfo);
   try {
     const userId = getUserId();
     if (!userId) {

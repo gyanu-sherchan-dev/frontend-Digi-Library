@@ -24,13 +24,14 @@ const Profile = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    const { currentPassword, password, confirmPassword } = formData;
-    if (confirmPassword !== password) {
+    const { currentPassword, newPassword, confirmPassword } = formData;
+    console.log(confirmPassword, newPassword);
+    if (confirmPassword !== newPassword) {
       return toast.error("Confirm Password and Password do not matched !");
     }
     const { status, message } = await updatePassword({
       currentPassword,
-      password,
+      newPassword,
     });
     toast[status](message);
   };
@@ -56,7 +57,7 @@ const Profile = () => {
                 <Form.Label>New Password</Form.Label>
                 <Form.Control
                   type="password"
-                  name="password"
+                  name="newPassword"
                   placeholder="Enter a New Password"
                   onChange={handleChange}
                 />
