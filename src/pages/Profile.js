@@ -56,7 +56,7 @@ const Profile = () => {
                 <Form.Label>New Password</Form.Label>
                 <Form.Control
                   type="password"
-                  name="currentPassword"
+                  name="password"
                   placeholder="Enter a New Password"
                   onChange={handleChange}
                 />
